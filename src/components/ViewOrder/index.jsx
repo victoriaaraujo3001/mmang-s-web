@@ -10,15 +10,15 @@ export const ViewOrder = () => {
   async function handleGetProducts() {
     const response = await CategoryById(path);
     setBooks(response);
-    console.log(response)
+    console.log(response);
   }
   useEffect(() => {
     handleGetProducts();
   }, []);
-
+  console.log(books);
   return (
     <>
-    <ContainerTitle text={path}/>
+      <ContainerTitle text={path} />
       {books?.map((index) => {
         return <span>{index.nome}</span>;
       })}
