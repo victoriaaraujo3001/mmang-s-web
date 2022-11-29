@@ -1,26 +1,44 @@
 import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import { CategoryById } from "../../controller/categoryById";
+import { BuyButton } from "../BuyButton";
 import { ContainerTitle } from "../ContainerTitle";
+import * as S from "./style";
 
 export const ViewOrder = () => {
   const [books, setBooks] = useState();
-  const path = window.location.pathname.split("/").pop();
-  console.log("----", path);
+
+  const { state } = useLocation();
+  const { id, name } = state;
 
   async function handleGetProducts() {
-    const response = await CategoryById(path);
+    const response = await CategoryById(id);
     setBooks(response);
   }
+
   useEffect(() => {
     handleGetProducts();
-  }, []);
-  console.log(books);
+  }, [state]);
+
   return (
     <>
-      <ContainerTitle text={path} />
-      {books?.map((index) => {
-        return <span>{index.nome}</span>;
-      })}
+      <ContainerTitle text={name} />
+      <S.Container>
+        {books?.map((index) => {
+          var preco = parseFloat(index.preco).toFixed(2);
+          return (
+            <S.Content>
+              <S.ImgManga src={index.capa} />
+              <S.Info>
+                <span>{index.nome}</span>
+                <S.Price>R${preco}</S.Price>
+                <span>cod.{index.codigo}</span>
+              </S.Info>
+              <BuyButton icon={<S.Cart />} text={"Comprar"} />
+            </S.Content>
+          );
+        })}
+      </S.Container>
     </>
   );
 };

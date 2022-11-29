@@ -10,16 +10,14 @@ body::-webkit-scrollbar-thumb {
     background: #1b263b;
     border-radius: 10px;
 }
-body{
-    font-family: "Poppins", sans-serif;
-}
 
 .main-content{
+    font-family: "Poppins", sans-serif;
     width: 100%;
     height: 100vh;
-    background: #778da9;
+    background: #415A77;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-evenly;
 }
