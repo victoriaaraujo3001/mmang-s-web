@@ -10,7 +10,6 @@ export const ViewOrder = () => {
   async function handleGetProducts() {
     const response = await CategoryById(path);
     setBooks(response);
-    console.log(response);
   }
   useEffect(() => {
     handleGetProducts();
