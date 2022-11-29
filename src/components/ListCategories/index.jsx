@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { AllCategories } from "../../controller/categories";
-import { CategoriesModal } from "../modals/CategoriesModal";
+import { CategoriesModal } from "../Modals/CategoriesModal";
 import { useNavigate } from "react-router-dom";
 import * as S from "./style";
 
