@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { ListCategories } from "../ListCategories";
 import {
   ContainerImage,
@@ -16,12 +16,16 @@ import {
 } from "./style";
 
 export const Navbar = () => {
-  
   const [isMenuVisible, setIsMenuVisible] = useState(false);
+  const navigate = useNavigate();
+
+  async function NavigateRegister() {
+    navigate("/register/user");
+  }
 
   return (
     <Nav>
-      <ContainerImage />
+      {/* <ContainerImage /> */}
       <ContainerInput>
         <IconSearch />
         <InputSearch placeholder="o que você está buscando..." />
@@ -32,33 +36,20 @@ export const Navbar = () => {
           Categorias
         </Item>
         <Item>
-          <Link
-            to="/pedidos"
-            style={{
-              textDecoration: "none",
-              padding: "0",
-              margin: "0px",
-              width: "100%",
-              height: '100%',
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}
-          >
-            <IconRequest />
-            Meus pedidos
-          </Link>
+          <IconRequest />
+          Meus pedidos
         </Item>
         <Item>
           <IconBag /> Minha cesta
         </Item>
-        <Item>
+        <Item onClick={() => NavigateRegister()}>
           <IconAccount />
           Conta
         </Item>
       </Items>
-      {isMenuVisible && <ListCategories closeModal={()=>setIsMenuVisible(!isMenuVisible)} />}
+      {isMenuVisible && (
+        <ListCategories closeModal={() => setIsMenuVisible(!isMenuVisible)} />
+      )}
     </Nav>
   );
 };

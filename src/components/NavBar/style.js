@@ -1,8 +1,10 @@
 import styled from "styled-components";
 import Logo from "../../assets/logo.png";
-import { BsSearch, BsCart3, BsPersonCircle } from "react-icons/bs";
+import { BsSearch, BsPersonCircle } from "react-icons/bs";
 import { BiCategory } from "react-icons/bi";
 import { SlHandbag } from "react-icons/sl";
+import { FaShoppingCart } from "react-icons/fa";
+import { Colors } from "../../themes/themes";
 
 export const Nav = styled.div`
   width: 100%;
@@ -11,9 +13,10 @@ export const Nav = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
-  background-color: #1b263b;
+  background-color: ${Colors.color1};
   font-family: "Poppins", sans-serif;
   z-index: 1;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 `;
 
 export const Items = styled.div`
@@ -34,10 +37,10 @@ export const Item = styled.div`
   justify-content: space-evenly;
   font-size: 0.9rem;
   text-align: center;
-  color: #F8F9FA;
+  color: ${Colors.text};
   border-radius: 4px;
 
-  :hover{
+  :hover {
     background-color: #778da9;
     cursor: pointer;
   }
@@ -70,23 +73,23 @@ export const IconSearch = styled(BsSearch)`
 `;
 
 export const IconCategory = styled(BiCategory)`
-  color: #F8F9FA;
-  font-size: 30px;
+  color: ${Colors.secondary};
+  font-size: 25px;
 `;
 
 export const IconBag = styled(SlHandbag)`
-  color: #F8F9FA;
-  font-size: 30px;
+  color: ${Colors.secondary};
+  font-size: 25px;
 `;
 
-export const IconRequest = styled(BsCart3)`
-  color: #F8F9FA;
-  font-size: 30px;
+export const IconRequest = styled(FaShoppingCart)`
+  color: ${Colors.secondary};
+  font-size: 25px;
 `;
 
 export const IconAccount = styled(BsPersonCircle)`
-  color: #F8F9FA;
-  font-size: 30px;
+  color: ${Colors.secondary};
+  font-size: 25px;
 `;
 
 export const InputSearch = styled.input`
