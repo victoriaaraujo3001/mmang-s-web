@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ListCategories } from "../ListCategories";
 import {
-  ContainerImage,
   ContainerInput,
   IconAccount,
   IconBag,
@@ -13,6 +12,7 @@ import {
   Item,
   Items,
   Nav,
+  Title,
 } from "./style";
 
 export const Navbar = () => {
@@ -22,10 +22,13 @@ export const Navbar = () => {
   async function NavigateRegister() {
     navigate("/register/user");
   }
+  async function NavigateHome() {
+    navigate("/home");
+  }
 
   return (
     <Nav>
-      {/* <ContainerImage /> */}
+      <Title onClick={() => NavigateHome()}>mmangás</Title>
       <ContainerInput>
         <IconSearch />
         <InputSearch placeholder="o que você está buscando..." />

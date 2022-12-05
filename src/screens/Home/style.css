@@ -15,7 +15,7 @@ body::-webkit-scrollbar-thumb {
     font-family: "Poppins", sans-serif;
     width: 100%;
     height: 100vh;
-    background: #B8B8B8;
+    background: #DDDDDD;
     display: flex;
     flex-direction: column;
     align-items: center;

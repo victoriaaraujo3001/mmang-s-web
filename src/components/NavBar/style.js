@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import Logo from "../../assets/logo.png";
 import { BsSearch, BsPersonCircle } from "react-icons/bs";
-import { BiCategory } from "react-icons/bi";
-import { SlHandbag } from "react-icons/sl";
+import { GiOpenBook } from "react-icons/gi";
+import { RiShoppingBag3Fill } from "react-icons/ri";
 import { FaShoppingCart } from "react-icons/fa";
 import { Colors } from "../../themes/themes";
 
@@ -13,10 +13,9 @@ export const Nav = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
-  background-color: ${Colors.color1};
+  background-color: #eeeded;
   font-family: "Poppins", sans-serif;
   z-index: 1;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 `;
 
 export const Items = styled.div`
@@ -25,7 +24,7 @@ export const Items = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-evenly;
 `;
 
 export const Item = styled.div`
@@ -38,11 +37,9 @@ export const Item = styled.div`
   font-size: 0.9rem;
   text-align: center;
   color: ${Colors.text};
-  border-radius: 4px;
-
   :hover {
-    background-color: #778da9;
     cursor: pointer;
+    text-decoration: underline;
   }
 `;
 
@@ -72,23 +69,23 @@ export const IconSearch = styled(BsSearch)`
   width: 10%;
 `;
 
-export const IconCategory = styled(BiCategory)`
-  color: ${Colors.secondary};
+export const IconCategory = styled(GiOpenBook)`
+  color: ${Colors.primary};
   font-size: 25px;
 `;
 
-export const IconBag = styled(SlHandbag)`
-  color: ${Colors.secondary};
+export const IconBag = styled(RiShoppingBag3Fill)`
+  color: ${Colors.primary};
   font-size: 25px;
 `;
 
 export const IconRequest = styled(FaShoppingCart)`
-  color: ${Colors.secondary};
+  color: ${Colors.primary};
   font-size: 25px;
 `;
 
 export const IconAccount = styled(BsPersonCircle)`
-  color: ${Colors.secondary};
+  color: ${Colors.primary};
   font-size: 25px;
 `;
 
@@ -104,4 +101,12 @@ export const InputSearch = styled.input`
   ::placeholder {
     color: #778da9;
   }
+`;
+
+export const Title = styled.span`
+  font-family: "Kavoon", cursive;
+  text-align: center;
+  font-size: 3rem;
+  color: ${Colors.secondary};
+  cursor: pointer;
 `;

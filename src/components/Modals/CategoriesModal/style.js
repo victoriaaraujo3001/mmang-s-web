@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { AiOutlineCloseCircle } from "react-icons/ai";
+import { Colors } from "../../../themes/themes";
 
 export const Container = styled.div`
   top: 0;
@@ -18,9 +19,9 @@ export const Container = styled.div`
 
 export const Content = styled.div`
   display: flex;
-  height: 50%;
-  width: 60%;
-  background-color: #778da9;
+  height: 55%;
+  width: 65%;
+  background-color: ${Colors.color1};
   border-radius: 6px;
   align-items: center;
 `;
@@ -33,8 +34,8 @@ export const ButtonCloseModal = styled.button`
 export const CloseIcon = styled(AiOutlineCloseCircle)`
   font-size: 28px;
   padding: 1% 2%;
-  color: #1b263b;
+  color: ${Colors.text};
   :hover {
-    color: #e0e1dd;
+    color: ${Colors.color3};
   }
 `;

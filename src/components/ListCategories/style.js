@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Colors } from "../../themes/themes";
 
 export const BoxOptions = styled.div`
   display: flex;
@@ -11,14 +12,14 @@ export const BoxOptions = styled.div`
 `;
 
 export const Option = styled.span`
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   width: 30%;
   height: 15%;
   padding: 0.6%;
-  color: #e0e1dd;
+  color: ${Colors.text};
   text-align: center;
   :hover {
-    color: #1b263b;
+    text-decoration: underline;
     cursor: pointer;
   }
 `;
