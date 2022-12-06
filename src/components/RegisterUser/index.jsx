@@ -1,9 +1,10 @@
 import { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 import { RegisterUser } from "../../controller/registerUser";
 import * as S from "./style";
 
-export const FormUser = () => {
+export const FormRegisterUser = () => {
   const [login, setLogin] = useState();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
@@ -27,11 +28,16 @@ export const FormUser = () => {
         "aria-live": "polite",
       },
     });
+  const navigate = useNavigate(); 
 
   async function getUserData(e) {
     e.preventDefault();
     const response = await RegisterUser(login, email, password);
   }
+  async function NavigateLogin(){
+    navigate("/login/user")
+  }
+
   return (
     <S.Container>
       <S.Title>Cadastrar</S.Title>
@@ -74,7 +80,7 @@ export const FormUser = () => {
       </S.Form>
       <S.Footer>
         <span>Já é cadastrado?</span>
-        <span>Faça aqui seu login</span>
+        <S.LinkLogin onClick={() => NavigateLogin()}>Faça aqui seu login</S.LinkLogin>
       </S.Footer>
       <Toaster />
     </S.Container>

@@ -88,6 +88,14 @@ export const Title = styled.span`
   border-bottom: 1px solid ${Colors.secondary};
 `;
 
+export const LinkLogin = styled.span`
+  color: ${Colors.text};
+  :hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+`;
+
 export const LoginIcon = styled(BsPerson)`
   font-size: 25px;
   color: ${Colors.secondary};
