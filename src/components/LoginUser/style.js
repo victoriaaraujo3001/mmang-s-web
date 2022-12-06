@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { BsPerson } from "react-icons/bs";
 import { MdOutlineEmail } from "react-icons/md";
-import { HiOutlineKey } from "react-icons/hi";
+import { HiOutlineKey, HiKey } from "react-icons/hi";
 import { Colors } from "../../themes/themes";
 
 export const Container = styled.div`
@@ -107,6 +107,11 @@ export const EmailIcon = styled(MdOutlineEmail)`
 `;
 
 export const PasswordIcon = styled(HiOutlineKey)`
+  font-size: 25px;
+  color: ${Colors.secondary};
+`;
+
+export const ViewPasswordIcon = styled(HiKey)`
   font-size: 25px;
   color: ${Colors.secondary};
 `;
