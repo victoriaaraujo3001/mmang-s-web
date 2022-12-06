@@ -25,7 +25,7 @@ export const FormLoginUser = () => {
     if (response.status == 200) {
       setTimeout(() => {
         setLoading(false), toast.success("Seja bem-vindo");
-      }, 9000);
+      }, 2000);
     } else {
       setTimeout(() => {
         setLoading(false), toast.error("Credenciais inválidas");
@@ -78,7 +78,7 @@ export const FormLoginUser = () => {
         {loading ? (
           <CircularProgress isIndeterminate color="#161B33" height={10} />
         ) : (
-          <S.Button type={"submit"}>cadastrar</S.Button>
+          <S.Button type={"submit"}>entrar</S.Button>
         )}
       </S.Form>
       <S.Footer>
@@ -87,7 +87,14 @@ export const FormLoginUser = () => {
           Faça aqui seu cadastro
         </S.LinkRegister>
       </S.Footer>
-      <Toaster />
+      <Toaster
+        toastOptions={{
+          style: {
+            background: "#161B33",
+            color: "#fff",
+          },
+        }}
+      />
     </S.Container>
   );
 };

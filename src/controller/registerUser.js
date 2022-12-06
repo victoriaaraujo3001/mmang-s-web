@@ -9,9 +9,9 @@ export async function RegisterUser(login, email, password) {
       email: email,
       password: password,
     });
-    return response.data;
+    return response;
   } catch (error) {
     console.log(error.response.data)
-    return error.message;
+    return error.response;
   }
 }

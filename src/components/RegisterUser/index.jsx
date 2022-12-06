@@ -1,41 +1,39 @@
 import { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
+import { CircularProgress } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import { RegisterUser } from "../../controller/registerUser";
 import * as S from "./style";
 
 export const FormRegisterUser = () => {
+  //informações para api
   const [login, setLogin] = useState();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
-  const notify = () =>
-    toast("Hello World", {
-      duration: 4000,
-      position: "top-center",
-      // Styling
-      style: {},
-      className: "",
-      // Custom Icon
-      icon: "👏",
-      // Change colors of success/error/loading icon
-      iconTheme: {
-        primary: "#000",
-        secondary: "#fff",
-      },
-      // Aria
-      ariaProps: {
-        role: "status",
-        "aria-live": "polite",
-      },
-    });
-  const navigate = useNavigate(); 
-
+  //logica para carregando
+  const [loading, setLoading] = useState(false);
+  //navegação entre telas
+  const navigate = useNavigate();
+  //pegar valores da input
+  const [inputType, setInputType] = useState("password");
+  //função que traz a rota da api
   async function getUserData(e) {
     e.preventDefault();
+    setLoading(true);
     const response = await RegisterUser(login, email, password);
+
+    if (response.status == 200) {
+      setTimeout(() => {
+        setLoading(false), toast.success("Seja bem-vindo");
+      }, 2000);
+    } else {
+      setTimeout(() => {
+        setLoading(false), toast.error("Credenciais inválidas");
+      }, 2000);
+    }
   }
-  async function NavigateLogin(){
-    navigate("/login/user")
+  async function NavigateLogin() {
+    navigate("/login/user");
   }
 
   return (
@@ -50,6 +48,7 @@ export const FormRegisterUser = () => {
               onChange={(e) => {
                 setLogin(e.target.value);
               }}
+              required
             />
             <S.LoginIcon />
           </S.BoxInput>
@@ -60,29 +59,51 @@ export const FormRegisterUser = () => {
               onChange={(e) => {
                 setEmail(e.target.value);
               }}
+              required
             />
             <S.EmailIcon />
           </S.BoxInput>
           <S.BoxInput>
             <S.Input
-              type={"password"}
+              type={inputType}
               placeholder="senha"
               onChange={(e) => {
                 setPassword(e.target.value);
               }}
             />
-            <S.PasswordIcon />
+            <div
+              onClick={() =>
+                setInputType(inputType == "password" ? "text" : "password")
+              }
+            >
+              {inputType == "password" ? (
+                <S.PasswordIcon />
+              ) : (
+                <S.ViewPasswordIcon />
+              )}
+            </div>
           </S.BoxInput>
         </S.Content>
-        <S.Button type={"submit"} onClick={notify}>
-          cadastrar
-        </S.Button>
+        {loading ? (
+          <CircularProgress isIndeterminate color="#161B33" height={10} />
+        ) : (
+          <S.Button type={"submit"}>cadastrar</S.Button>
+        )}
       </S.Form>
       <S.Footer>
         <span>Já é cadastrado?</span>
-        <S.LinkLogin onClick={() => NavigateLogin()}>Faça aqui seu login</S.LinkLogin>
+        <S.LinkLogin onClick={() => NavigateLogin()}>
+          Faça aqui seu login
+        </S.LinkLogin>
       </S.Footer>
-      <Toaster />
+      <Toaster
+        toastOptions={{
+          style: {
+            background: "#161B33",
+            color: "#fff",
+          },
+        }}
+      />
     </S.Container>
   );
 };
