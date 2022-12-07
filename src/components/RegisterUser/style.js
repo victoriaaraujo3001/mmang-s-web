@@ -1,12 +1,12 @@
 import styled from "styled-components";
 import { BsPerson } from "react-icons/bs";
 import { MdOutlineEmail } from "react-icons/md";
-import { HiOutlineKey } from "react-icons/hi";
+import { HiOutlineKey, HiKey } from "react-icons/hi";
 import { Colors } from "../../themes/themes";
 
 export const Container = styled.div`
   width: 45%;
-  height: 90%;
+  height: 100%;
   border-radius: 6px;
   display: flex;
   flex-direction: column;
@@ -29,7 +29,7 @@ export const BoxInput = styled.div`
   height: 100%;
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: flex-end;
   justify-content: space-evenly;
 `;
 
@@ -68,6 +68,7 @@ export const Button = styled.button`
   justify-content: space-evenly;
   border-radius: 10px;
   color: ${Colors.color4};
+  margin-top: 2%;
 `;
 
 export const Footer = styled.div`
@@ -107,6 +108,11 @@ export const EmailIcon = styled(MdOutlineEmail)`
 `;
 
 export const PasswordIcon = styled(HiOutlineKey)`
+  font-size: 25px;
+  color: ${Colors.secondary};
+`;
+
+export const ViewPasswordIcon = styled(HiKey)`
   font-size: 25px;
   color: ${Colors.secondary};
 `;

@@ -48,7 +48,7 @@ export const ContainerInput = styled.div`
   height: 40%;
   display: flex;
   align-items: center;
-  border: 1px solid #778da9;
+  border: 1px solid ${Colors.secondary};
   border-radius: 6px;
 `;
 
@@ -64,7 +64,7 @@ export const ContainerImage = styled.div`
 `;
 
 export const IconSearch = styled(BsSearch)`
-  color: #778da9;
+  color: ${Colors.secondary};
   font-size: 24px;
   width: 10%;
 `;
@@ -95,11 +95,11 @@ export const InputSearch = styled.input`
   background: transparent;
   border: none;
   outline: none;
-  color: #778da9;
+  color: ${Colors.secondary};
   padding: 1% 2%;
 
   ::placeholder {
-    color: #778da9;
+    color: ${Colors.secondary};
   }
 `;
 

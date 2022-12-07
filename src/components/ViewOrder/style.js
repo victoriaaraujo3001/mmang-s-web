@@ -1,31 +1,34 @@
 import styled from "styled-components";
 import { BsCartPlus } from "react-icons/bs";
+import { Colors } from "../../themes/themes";
 
 export const Container = styled.div`
-  width: 80%;
-  height: 70%;
+  width: 1100px;
+  min-height: 80%;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: left;
 `;
 
 export const Content = styled.div`
   width: 25%;
-  height: 92%;
+  height: 450px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
+  margin-bottom: 2%;
 `;
 
 export const ImgManga = styled.img`
   width: 75%;
   height: 60%;
   border-radius: 6px;
+  opacity: 0.8;
 `;
-
+1;
 export const Info = styled.div`
   width: 90%;
   height: 30%;
@@ -34,7 +37,7 @@ export const Info = styled.div`
   align-items: center;
   justify-content: space-evenly;
   text-align: center;
-  color: #f8f9fa;
+  color: ${Colors.text};
 `;
 
 export const Price = styled.span`

@@ -21,8 +21,8 @@ export const FormRegisterUser = () => {
     e.preventDefault();
     setLoading(true);
     const response = await RegisterUser(login, email, password);
-
-    if (response.status == 200) {
+  //validando resposta da api e trazendo notificações
+    if (response.status == 201) {
       setTimeout(() => {
         setLoading(false), toast.success("Seja bem-vindo");
       }, 2000);
@@ -32,6 +32,7 @@ export const FormRegisterUser = () => {
       }, 2000);
     }
   }
+  //função que navega para tela de login
   async function NavigateLogin() {
     navigate("/login/user");
   }

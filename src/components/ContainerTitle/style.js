@@ -10,6 +10,7 @@ export const ContainerTitle = styled.div`
   align-items: flex-start;
   justify-content: center;
   padding: 1% 3%;
+  margin: 5% 3%;
 `;
 
 export const Title = styled.span`

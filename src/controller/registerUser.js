@@ -11,7 +11,7 @@ export async function RegisterUser(login, email, password) {
     });
     return response;
   } catch (error) {
-    console.log(error.response.data)
+    console.log(error.response)
     return error.response;
   }
 }

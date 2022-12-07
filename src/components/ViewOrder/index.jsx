@@ -6,16 +6,17 @@ import { ContainerTitle } from "../ContainerTitle";
 import * as S from "./style";
 
 export const ViewOrder = () => {
+  //informações do manga
   const [books, setBooks] = useState();
-
+  //pagando id e nome da categoria (pela rota)
   const { state } = useLocation();
   const { id, name } = state;
-
+  //função que traz os dados da api
   async function handleGetProducts() {
     const response = await CategoryById(id);
     setBooks(response);
   }
-
+  //para fazer a requisição cada vez que mudar a categoria
   useEffect(() => {
     handleGetProducts();
   }, [state]);

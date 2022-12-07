@@ -8,10 +8,7 @@ export function Register(props) {
       <nav>
         <Navbar />
       </nav>
-      <main className="main-register">
-        {/* <img src={login} className="img-container" /> */}
-        {props.component}
-      </main>
+      <main className="main-register">{props.component}</main>
     </body>
   );
 }
