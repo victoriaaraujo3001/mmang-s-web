@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ContainerTitle } from "../components/ContainerTitle";
 import { FormLoginUser } from "../components/LoginUser";
+import { Promotions } from "../components/Promotions";
 import { FormRegisterUser } from "../components/RegisterUser";
 import { ViewOrder } from "../components/ViewOrder";
 import { Home } from "../screens/Home";
@@ -10,7 +11,7 @@ export function RoutesAplication() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route element={<Home component={<ContainerTitle text="Ofertas imperdíveis" />} />}>
+        <Route element={<Home component={<Promotions />} />}>
           <Route path="/home"/>
         </Route>
         <Route element={<Home component={<ViewOrder/>} />}>
