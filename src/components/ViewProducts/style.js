@@ -25,7 +25,7 @@ export const Content = styled.div`
 export const ImgManga = styled.img`
   width: 75%;
   height: 60%;
-  border-radius: 6px;
+  border-radius: 8px;
   opacity: 0.8;
 `;
 1;
@@ -39,6 +39,19 @@ export const Info = styled.div`
   text-align: center;
   color: ${Colors.text};
 `;
+
+export const Button = styled.button`
+  width: 90%;
+  height: 10%;
+  background-color: ${Colors.primary};
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  border-radius: 10px;
+  color: ${Colors.color1};
+`;
+
 
 export const Price = styled.span`
   font-family: "Roboto", sans-serif;

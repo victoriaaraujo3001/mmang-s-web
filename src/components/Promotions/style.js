@@ -59,6 +59,18 @@ export const Info = styled.div`
   color: ${Colors.text};
 `;
 
+export const Button = styled.button`
+  width: 90%;
+  height: 10%;
+  background-color: ${Colors.primary};
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  border-radius: 10px;
+  color: ${Colors.color1};
+`;
+
 export const Price = styled.span`
   font-family: "Roboto", sans-serif;
   font-weight: bold;

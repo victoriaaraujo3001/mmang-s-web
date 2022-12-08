@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { PromotionsMangas } from "../../controller/promotions";
-import { BuyButton } from "../BuyButton";
 import { ContainerTitle } from "../ContainerTitle";
 import * as S from "./style";
 
@@ -27,7 +26,9 @@ export const Promotions = () => {
           return (
             <S.Content>
               <S.ImgManga>
-                <S.Ticket><S.Sale /></S.Ticket>
+                <S.Ticket>
+                  <S.Sale />
+                </S.Ticket>
                 <S.Img src={index.capa} />
               </S.ImgManga>
               <S.Info>
@@ -35,7 +36,10 @@ export const Promotions = () => {
                 <S.Price>R${preco}</S.Price>
                 <span>cod.{index.cod_livro}</span>
               </S.Info>
-              <BuyButton icon={<S.Cart />} text={"Comprar"} />
+
+              <S.Button>
+                <S.Cart /> <span>Comprar</span>
+              </S.Button>
             </S.Content>
           );
         })}

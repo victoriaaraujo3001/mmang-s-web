@@ -1,9 +1,9 @@
 import { api } from "../services/api";
 
-export async function PromotionsMangas() {
+export async function FindMangaByCod(cod) {
   try {
-    const response = await api.get("/promotions");
-    return response.data;
+    const response = await api.get(`/manga/${cod}`);
+    return response;
   } catch (error) {
     console.log(error.response);
     return {

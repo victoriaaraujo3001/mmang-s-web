@@ -1,7 +1,7 @@
 import { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { CircularProgress } from "@chakra-ui/react";
-import { useNavigate } from "react-router-dom";
+import { redirect, useNavigate } from "react-router-dom";
 import { LoginUser } from "../../controller/loginUser";
 import * as S from "./style";
 
@@ -20,12 +20,16 @@ export const FormLoginUser = () => {
     e.preventDefault();
     setLoading(true);
     const response = await LoginUser(login, password);
-
     //validando resposta da api e trazendo notificações
     if (response.status == 200) {
+      //para chamar a notificação depois de carregar
       setTimeout(() => {
         setLoading(false), toast.success("Seja bem-vindo");
       }, 2000);
+      //para ser redirecionada para a home
+      setTimeout(() => {
+        navigate("/home");
+      }, 3000);
     } else {
       setTimeout(() => {
         setLoading(false), toast.error("Credenciais inválidas");

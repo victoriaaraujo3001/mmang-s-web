@@ -26,17 +26,17 @@ export const Content = styled.div`
 
 export const BoxInput = styled.div`
   width: 90%;
-  height: 100%;
+  height: 20%;
   display: flex;
   flex-direction: row;
   align-items: flex-end;
   justify-content: space-evenly;
+  border-bottom: 2px solid ${Colors.secondary};
 `;
 
 export const Input = styled.input`
   border: none;
   outline: none;
-  border-bottom: 2px solid ${Colors.secondary};
   background-color: transparent;
   width: 90%;
   padding: 2%;
