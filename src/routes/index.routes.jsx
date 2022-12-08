@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { FormLoginUser } from "../components/LoginUser";
 import { Promotions } from "../components/Promotions";
 import { FormRegisterUser } from "../components/RegisterUser";
+import { Requests } from "../components/Requests";
 import { ViewProduct } from "../components/ViewProduct";
 import { ViewProducts } from "../components/ViewProducts";
 import { Home } from "../screens/Home";
@@ -25,6 +26,9 @@ export function RoutesAplication() {
         </Route>
         <Route element={<Home component={<ViewProduct/>} />}>
           <Route path="/book/:id"/>
+        </Route>
+        <Route element={<Home component={<Requests/>} />}>
+          <Route path="/pedidos"/>
         </Route>
       </Routes>
     </BrowserRouter>
