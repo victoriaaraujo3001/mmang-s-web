@@ -8,7 +8,10 @@ export async function AddRequests(id_manga, preco_manga) {
     });
     return response;
   } catch (error) {
-    console.log(error.response);
+    console.log({
+      response: error.response,
+      message: error.message,
+    });
     return {
       response: error.response,
       message: error.message,

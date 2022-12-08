@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { FindMangaByCod } from "../../controller/mangáByCode";
+import { AddRequests } from "../../controller/requests";
 import * as S from "./style";
 
 export const ViewProduct = () => {
@@ -8,7 +9,7 @@ export const ViewProduct = () => {
   const [book, setBook] = useState();
   //estados para o contador
   const [counter, setCounter] = useState(0);
-
+  //armazena valor total
   const [currentValue, setCurrentValue] = useState(0);
   //função de somar
   function handleClickSum() {
@@ -29,6 +30,12 @@ export const ViewProduct = () => {
       console.log(amount);
       setCurrentValue(amount);
     }
+  }
+
+  async function Add(id_manga, preco_manga) {
+    const response = await AddRequests(id_manga, preco_manga);
+    console.log("🚀 ~ file: index.jsx:37 ~ Add ~ response", response)
+    return response;
   }
   // pegar o cod que esta sendo passado pela url
   const { state } = useLocation();
@@ -83,7 +90,11 @@ export const ViewProduct = () => {
               minha cesta
             </S.BoxBuyButton>
           </S.BuyButton>
-          <S.BuyButton onClick={() => totalOrderAmount()}>
+          <S.BuyButton
+            onClick={() => {
+              totalOrderAmount(), Add(book?.id, book?.preco);
+            }}
+          >
             <S.BoxBuyButton>
               <S.IconRequest />
               comprar
