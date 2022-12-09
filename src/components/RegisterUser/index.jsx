@@ -24,7 +24,7 @@ export const FormRegisterUser = () => {
   //validando resposta da api e trazendo notificações
     if (response.status == 201) {
       setTimeout(() => {
-        setLoading(false), toast.success("Seja bem-vindo");
+        setLoading(false), toast.success("Usuário cadastrado com sucesso");
       }, 2000);
     } else {
       setTimeout(() => {

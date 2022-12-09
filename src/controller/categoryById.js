@@ -5,6 +5,10 @@ export async function CategoryById(id) {
     const response = await api.get(`/filterMangas/${id}`);
     return response.data;
   } catch (error) {
-    return error.message;
+    return {
+      response: error.response,
+      message: error.response.message,
+      status: error.response.status,
+    };
   }
 }

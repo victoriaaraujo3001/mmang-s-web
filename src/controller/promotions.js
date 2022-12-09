@@ -5,10 +5,10 @@ export async function PromotionsMangas() {
     const response = await api.get("/promotions");
     return response.data;
   } catch (error) {
-    console.log(error.response);
     return {
       response: error.response,
-      message: error.message,
+      message: error.response.message,
+      status: error.response.status,
     };
   }
 }

@@ -12,7 +12,10 @@ export async function LoginUser(login, password) {
     return response;
     // return response.data;
   } catch (error) {
-    console.log(error.response.data);
-    return error.message;
+    return {
+      response: error.response,
+      message: error.response.message,
+      status: error.response.status,
+    };
   }
 }

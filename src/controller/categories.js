@@ -5,6 +5,10 @@ export async function AllCategories() {
     const response = await api.get("/generos");
     return response.data;
   } catch (error) {
-    return error.message;
+    return {
+      response: error.response,
+      message: error.response.message,
+      status: error.response.status,
+    };
   }
 }

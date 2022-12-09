@@ -11,7 +11,10 @@ export async function RegisterUser(login, email, password) {
     });
     return response;
   } catch (error) {
-    console.log(error.response)
-    return error.response;
+    return {
+      response: error.response,
+      message: error.response.message,
+      status: error.response.status,
+    };
   }
 }

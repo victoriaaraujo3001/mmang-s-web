@@ -1,5 +1,7 @@
+import { CircularProgress } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import toast, { Toaster } from "react-hot-toast";
+import { useLocation, useNavigate } from "react-router-dom";
 import { FindMangaByCod } from "../../controller/mangáByCode";
 import { AddRequests } from "../../controller/requests";
 import * as S from "./style";
@@ -11,6 +13,10 @@ export const ViewProduct = () => {
   const [counter, setCounter] = useState(0);
   //armazena valor total
   const [currentValue, setCurrentValue] = useState(0);
+  //logica para carregando
+  const [loading, setLoading] = useState(false);
+  //navegação para os pedidos
+  const navigate = useNavigate();
   //função de somar
   function handleClickSum() {
     setCounter(counter + 1);
@@ -31,10 +37,28 @@ export const ViewProduct = () => {
       setCurrentValue(amount);
     }
   }
-
-  async function Add(id_manga, preco_manga) {
-    const response = await AddRequests(id_manga, preco_manga);
-    console.log("🚀 ~ file: index.jsx:37 ~ Add ~ response", response)
+  //função que adiciona pedido na api
+  async function Add(id_manga, preco_manga, qtde_unidades, total_compra) {
+    setLoading(true);
+    //adicionar objeto do pedido
+    const response = await AddRequests(
+      id_manga,
+      preco_manga,
+      qtde_unidades,
+      total_compra
+    );
+    switch (response.status) {
+      case 201:
+        setTimeout(() => {
+          setLoading(false), toast.success("Pedido adicionado com sucesso");
+        }, 2000);
+        break;
+      case 500:
+        setTimeout(() => {
+          setLoading(false), toast.error("Adicione uma quantidade válida");
+        }, 2000);
+        break;
+    }
     return response;
   }
   // pegar o cod que esta sendo passado pela url
@@ -43,10 +67,6 @@ export const ViewProduct = () => {
   //função que trás os dados da api
   async function getInfoManga() {
     const response = await FindMangaByCod(cod);
-    console.log(
-      "🚀 ~ file: index.jsx:13 ~ getInfoManga ~ response",
-      response.data
-    );
     setBook(response.data);
   }
   //renderização da função cada vez que for alterado o state
@@ -92,16 +112,32 @@ export const ViewProduct = () => {
           </S.BuyButton>
           <S.BuyButton
             onClick={() => {
-              totalOrderAmount(), Add(book?.id, book?.preco);
+              totalOrderAmount(),
+                Add(book?.id, book?.preco, counter, currentValue);
             }}
           >
-            <S.BoxBuyButton>
-              <S.IconRequest />
-              comprar
-            </S.BoxBuyButton>
+            {loading ? (
+              <CircularProgress isIndeterminate color="#161B33" size={"40px"} />
+            ) : (
+              <S.BoxBuyButton>
+                <S.IconRequest />
+                comprar
+              </S.BoxBuyButton>
+            )}
           </S.BuyButton>
         </S.Footer>
       </S.Content>
+      <Toaster
+        position="top-right"
+        toastOptions={{
+          style: {
+            background: "#eeeded",
+            border: "1px solid #161B33",
+            color: "#161B33",
+            marginTop: "4%",
+          },
+        }}
+      />
     </S.Container>
   );
 };

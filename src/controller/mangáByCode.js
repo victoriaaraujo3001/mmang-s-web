@@ -5,10 +5,10 @@ export async function FindMangaByCod(cod) {
     const response = await api.get(`/manga/${cod}`);
     return response;
   } catch (error) {
-    console.log(error.response);
     return {
       response: error.response,
-      message: error.message,
+      message: error.response.message,
+      status: error.response.status,
     };
   }
 }
