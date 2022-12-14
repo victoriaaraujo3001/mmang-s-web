@@ -94,8 +94,8 @@ export const FormLoginUser = () => {
       <Toaster
         toastOptions={{
           style: {
-            background: "#161B33",
-            color: "#fff",
+            background: "#eeeded",
+            color: "##161B33",
           },
         }}
       />

@@ -3,64 +3,62 @@ import { useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { useLocation, useNavigate } from "react-router-dom";
 import { FindMangaByCod } from "../../controller/mangáByCode";
-import { AddRequests } from "../../controller/requests";
 import * as S from "./style";
+import { api } from "../../services/api";
 
 export const ViewProduct = () => {
+  const navigate = useNavigate();
   //guardar os valores que vem da api
   const [book, setBook] = useState();
   //estados para o contador
-  const [counter, setCounter] = useState(0);
+  const [counter, setCounter] = useState(1);
   //armazena valor total
   const [currentValue, setCurrentValue] = useState(0);
   //logica para carregando
   const [loading, setLoading] = useState(false);
-  //navegação para os pedidos
-  const navigate = useNavigate();
   //função de somar
   function handleClickSum() {
     setCounter(counter + 1);
+    TotalAmount(counter + 1);
   }
   //função de subtrair
   function handleClickSubtraction() {
+    if (counter == 1) return;
     setCounter(counter - 1);
+    TotalAmount(counter - 1);
   }
-  //contador não ficar negativo
-  if (counter < 0) {
-    setCounter(0);
+  //função valor total
+  function TotalAmount(qtdeBook) {
+    setCurrentValue(book?.preco * qtdeBook);
   }
-  //função de retornar valor total do pedido
-  function totalOrderAmount() {
-    if (counter >= 1) {
-      const amount = book?.preco * counter;
-      console.log(amount);
-      setCurrentValue(amount);
-    }
-  }
+
   //função que adiciona pedido na api
   async function Add(id_manga, preco_manga, qtde_unidades, total_compra) {
-    setLoading(true);
+    if (counter) setLoading(true);
     //adicionar objeto do pedido
-    const response = await AddRequests(
-      id_manga,
-      preco_manga,
-      qtde_unidades,
-      total_compra
-    );
-    switch (response.status) {
-      case 201:
-        setTimeout(() => {
-          setLoading(false), toast.success("Pedido adicionado com sucesso");
-        }, 2000);
-        break;
-      case 500:
-        setTimeout(() => {
-          setLoading(false), toast.error("Adicione uma quantidade válida");
-        }, 2000);
-        break;
-    }
-    return response;
+    await api
+      .post("/requests/register", {
+        id_manga,
+        preco_manga,
+        qtde_unidades,
+        total_compra: currentValue,
+      })
+      .then(({ data }) => {
+        toast.success("Pedido adicionado com sucesso");
+        setTimeout(() => navigate("/pedidos"), 2000);
+        console.log(data);
+      })
+      .catch((error) => {
+        if(error.response.status == 500){
+
+        }
+        toast.error("Adicione uma quantidade válida");
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   }
+
   // pegar o cod que esta sendo passado pela url
   const { state } = useLocation();
   const { cod } = state;
@@ -68,6 +66,7 @@ export const ViewProduct = () => {
   async function getInfoManga() {
     const response = await FindMangaByCod(cod);
     setBook(response.data);
+    setCurrentValue(response.data?.preco);
   }
   //renderização da função cada vez que for alterado o state
   useEffect(() => {
@@ -92,7 +91,7 @@ export const ViewProduct = () => {
           </S.Availability>
         </S.Info>
         <S.QtdeBooks>
-          <S.Price>R$ {parseFloat(book?.preco).toFixed(2)}</S.Price>
+          <S.Price>R$ {parseFloat(currentValue).toFixed(2)}</S.Price>
           <S.BoxCounter>
             <S.ButtonsCounter onClick={() => handleClickSubtraction()}>
               -
@@ -112,8 +111,7 @@ export const ViewProduct = () => {
           </S.BuyButton>
           <S.BuyButton
             onClick={() => {
-              totalOrderAmount(),
-                Add(book?.id, book?.preco, counter, currentValue);
+              Add(book?.id, book?.preco, counter);
             }}
           >
             {loading ? (
@@ -132,7 +130,6 @@ export const ViewProduct = () => {
         toastOptions={{
           style: {
             background: "#eeeded",
-            border: "1px solid #161B33",
             color: "#161B33",
             marginTop: "4%",
           },

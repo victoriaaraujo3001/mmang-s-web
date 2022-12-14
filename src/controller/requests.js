@@ -1,19 +1,9 @@
 import { api } from "../services/api";
 
-export async function AddRequests(
-  id_manga,
-  preco_manga,
-  qtde_unidades,
-  total_compra
-) {
+export async function AllRequests() {
   try {
-    const response = await api.post("/requests/register", {
-      id_manga,
-      preco_manga,
-      qtde_unidades,
-      total_compra,
-    });
-    return response;
+    const response = await api.get("/requests");
+    return response.data;
   } catch (error) {
     return {
       response: error.response,
