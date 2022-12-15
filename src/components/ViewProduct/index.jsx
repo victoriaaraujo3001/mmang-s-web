@@ -77,7 +77,7 @@ export const ViewProduct = () => {
       <S.Content>
         <S.ContainerSave>
           <S.Name>{book?.nome}</S.Name>
-          <S.IconSaveFavorite />
+          <S.IconSaveFavorite title="Favoritar mangá"/>
         </S.ContainerSave>
         <S.Info>
           <S.Code>

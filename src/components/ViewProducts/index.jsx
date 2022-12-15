@@ -19,7 +19,7 @@ export const ViewProducts = () => {
   }
 
   async function FilterManga(cod, nome, preco, capa) {
-    navigate(`/book/${cod}`, {
+    navigate(`/manga/${cod}`, {
       state: { cod: cod },
     });
   }

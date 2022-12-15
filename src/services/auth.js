@@ -11,7 +11,8 @@ export const tipoUsuario = () =>
 export const primeiroAcesso = () =>
   JSON.parse(localStorage.getItem(CHAVE_USUARIO)).primeiro_acesso;
 // Pega o Token do usuario
-export const pegarToken = () => localStorage.getItem(CHAVE_TOKEN);
+export const pegarToken = () => localStorage.getItem(TOKEN);
+export const pegarIdUser = () => localStorage.getItem(USER);
 
 // Pega os dados do usuario
 export const pegarUsuario = () =>
@@ -19,8 +20,8 @@ export const pegarUsuario = () =>
 
 // Salva os dados iniciais do usuario
 export const logar = (token, usuario) => {
-  localStorage.setItem(TOKEN, token);
-  localStorage.setItem(USER, usuario);
+  localStorage.setItem(USER, token);
+  localStorage.setItem(TOKEN, usuario);
 };
 
 // Desloga o usuario

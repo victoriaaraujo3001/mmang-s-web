@@ -21,7 +21,8 @@ export const Requests = () => {
 
     if (response.status == 200) {
       setTimeout(() => {
-        toast.success("Pedido finalizado com sucesso");
+        toast.success("Pedido finalizado com sucesso"),
+          window.location.reload();
       }, 1000);
     }
   }
@@ -31,7 +32,7 @@ export const Requests = () => {
 
     if (response.status == 200) {
       setTimeout(() => {
-        toast.error("Pedido excluido com sucesso"), location.reload();
+        toast.error("Pedido excluido com sucesso"), window.location.reload();
       }, 1500);
     }
   }

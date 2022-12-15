@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Favorites } from "../components/Favorites";
 import { FormLoginUser } from "../components/LoginUser";
 import { Promotions } from "../components/Promotions";
 import { FormRegisterUser } from "../components/RegisterUser";
@@ -19,16 +20,19 @@ export function RoutesAplication() {
           <Route path="/categorias/:id"/>
         </Route>
         <Route element={<Register component={<FormRegisterUser/>} />}>
-          <Route path="/register/user"/>
+          <Route path="/cadastro/usuario"/>
         </Route>
         <Route element={<Register component={<FormLoginUser/>} />}>
-          <Route path="/login/user"/>
+          <Route path="/login/usuario"/>
         </Route>
         <Route element={<Home component={<ViewProduct/>} />}>
-          <Route path="/book/:id"/>
+          <Route path="/manga/:id"/>
         </Route>
         <Route element={<Home component={<Requests/>} />}>
           <Route path="/pedidos"/>
+        </Route>
+        <Route element={<Home component={<Favorites/>} />}>
+          <Route path="/favoritos"/>
         </Route>
       </Routes>
     </BrowserRouter>

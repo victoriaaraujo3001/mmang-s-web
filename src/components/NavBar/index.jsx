@@ -11,11 +11,11 @@ export const Navbar = () => {
   const navigate = useNavigate();
   //navegar para tela de cadastro
   async function NavigateRegister() {
-    navigate("/register/user");
+    navigate("/cadastro/usuario");
   }
   //navegar para tela de login
   async function NavigateLogin() {
-    navigate("/login/user");
+    navigate("/login/usuario");
   }
   //navegar para home
   async function NavigateHome() {
@@ -24,6 +24,10 @@ export const Navbar = () => {
   //navegar para tela de pedidos
   async function NavigateRequest() {
     navigate("/pedidos");
+  }
+  //navegar para tela favoritos
+  async function NavigateFavorites() {
+    navigate("/favoritos");
   }
   return (
     <S.Nav>
@@ -41,7 +45,7 @@ export const Navbar = () => {
           <S.IconRequest />
           Meus pedidos
         </S.Item>
-        <S.Item>
+        <S.Item onClick={() => NavigateFavorites()}>
           <S.IconBag /> Meus favoritos
         </S.Item>
         <S.Item>

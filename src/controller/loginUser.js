@@ -8,7 +8,7 @@ export async function LoginUser(login, password) {
       password: password,
     });
     console.log(response.data) 
-    // logar(response.data.user.id, response.data.token) 
+    logar(response.data.user.id, response.data.token) 
     return response;
     // return response.data;
   } catch (error) {
