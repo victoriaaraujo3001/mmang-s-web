@@ -4,7 +4,7 @@ import { AiOutlineCheck, AiOutlineClose } from "react-icons/ai";
 import { Colors } from "../../themes/themes";
 
 export const Container = styled.div`
-  margin-top: 4%;
+  margin-top: 3%;
   width: 100%;
   height: 80%;
   max-height: 100%;
@@ -21,6 +21,20 @@ export const Content = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
+`;
+
+export const ContainerNotFound = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+  width: 500px;
+  height: 500px;
+`;
+
+export const ImageNotFound = styled.img`
+  width: 100%;
+  height: 100%;
 `;
 
 export const ConteinerInfoGeneral = styled.div`
@@ -106,6 +120,17 @@ export const Button = styled.button`
 `;
 
 export const Name = styled.span`
+  font-size: 1.4rem;
+  color: ${Colors.text};
+`;
+
+export const Title = styled.span`
+  font-size: 1.5rem;
+  color: ${Colors.text};
+  margin-bottom: 0.5%;
+`;
+
+export const MessageNotFound = styled.span`
   font-size: 1.4rem;
   color: ${Colors.text};
 `;

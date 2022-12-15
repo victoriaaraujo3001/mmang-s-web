@@ -1,8 +1,14 @@
 import styled from "styled-components";
-import Logo from "../../assets/logo.png";
-import { BsSearch, BsPersonCircle, BsBookmarkHeartFill } from "react-icons/bs";
+import {
+  BsSearch,
+  BsPersonCircle,
+  BsBookmarkHeartFill,
+  BsFillFilePersonFill,
+  BsFillPersonFill,
+} from "react-icons/bs";
 import { GiOpenBook } from "react-icons/gi";
 import { FaShoppingCart } from "react-icons/fa";
+import { RiShoppingBag2Fill } from "react-icons/ri";
 import { Colors } from "../../themes/themes";
 
 export const Nav = styled.div`
@@ -51,17 +57,6 @@ export const ContainerInput = styled.div`
   border-radius: 6px;
 `;
 
-export const ContainerImage = styled.div`
-  width: 25%;
-  height: 80%;
-  display: flex;
-  align-items: center;
-  background-image: url(${Logo});
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-`;
-
 export const IconSearch = styled(BsSearch)`
   color: ${Colors.secondary};
   font-size: 24px;
@@ -86,6 +81,21 @@ export const IconRequest = styled(FaShoppingCart)`
 export const IconAccount = styled(BsPersonCircle)`
   color: ${Colors.primary};
   font-size: 25px;
+`;
+
+export const IconRegister = styled(BsFillFilePersonFill)`
+  color: ${Colors.primary};
+  font-size: 18px;
+`;
+
+export const IconLogin = styled(BsFillPersonFill)`
+  color: ${Colors.primary};
+  font-size: 18px;
+`;
+
+export const IconMyBag = styled(RiShoppingBag2Fill)`
+color: ${Colors.primary};
+font-size: 18px;
 `;
 
 export const InputSearch = styled.input`

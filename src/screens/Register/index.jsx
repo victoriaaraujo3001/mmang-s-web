@@ -1,5 +1,4 @@
 import { Navbar } from "../../components/NavBar";
-import login from "../../assets/login.jpg";
 import "./style.css";
 
 export function Register(props) {

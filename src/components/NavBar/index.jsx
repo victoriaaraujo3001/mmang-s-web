@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ListCategories } from "../ListCategories";
 import * as S from "./style";
+import { Menu, MenuButton, MenuList, MenuItem } from "@chakra-ui/react";
 
 export const Navbar = () => {
   //aparecer ou não modal de categorias
@@ -11,6 +12,10 @@ export const Navbar = () => {
   //navegar para tela de cadastro
   async function NavigateRegister() {
     navigate("/register/user");
+  }
+  //navegar para tela de login
+  async function NavigateLogin() {
+    navigate("/login/user");
   }
   //navegar para home
   async function NavigateHome() {
@@ -39,9 +44,46 @@ export const Navbar = () => {
         <S.Item>
           <S.IconBag /> Meus favoritos
         </S.Item>
-        <S.Item onClick={() => NavigateRegister()}>
-          <S.IconAccount />
-          Conta
+        <S.Item>
+          <Menu>
+            {({ isOpen }) => (
+              <>
+                <MenuButton isActive={isOpen} rightIcon={<S.IconAccount />}>
+                  <div
+                    style={{
+                      height: "70px",
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      justifyContent: "space-evenly",
+                    }}
+                  >
+                    {isOpen ? (
+                      <S.IconAccount color="#808080" />
+                    ) : (
+                      <S.IconAccount />
+                    )}
+                    <span>Conta</span>
+                  </div>
+                </MenuButton>
+                <MenuList>
+                  <MenuItem
+                    onClick={() => NavigateRegister()}
+                    icon={<S.IconRegister />}
+                  >
+                    Cadasto
+                  </MenuItem>
+                  <MenuItem
+                    onClick={() => NavigateLogin()}
+                    icon={<S.IconLogin />}
+                  >
+                    Login
+                  </MenuItem>
+                  <MenuItem icon={<S.IconMyBag />}>Minha cesta</MenuItem>
+                </MenuList>
+              </>
+            )}
+          </Menu>
         </S.Item>
       </S.Items>
       {isMenuVisible && (
