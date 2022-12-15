@@ -1,8 +1,7 @@
 import styled from "styled-components";
 import Logo from "../../assets/logo.png";
-import { BsSearch, BsPersonCircle } from "react-icons/bs";
+import { BsSearch, BsPersonCircle, BsBookmarkHeartFill } from "react-icons/bs";
 import { GiOpenBook } from "react-icons/gi";
-import { RiShoppingBag3Fill } from "react-icons/ri";
 import { FaShoppingCart } from "react-icons/fa";
 import { Colors } from "../../themes/themes";
 
@@ -74,7 +73,7 @@ export const IconCategory = styled(GiOpenBook)`
   font-size: 25px;
 `;
 
-export const IconBag = styled(RiShoppingBag3Fill)`
+export const IconBag = styled(BsBookmarkHeartFill)`
   color: ${Colors.primary};
   font-size: 25px;
 `;

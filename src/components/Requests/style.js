@@ -1,12 +1,13 @@
 import styled from "styled-components";
 import { HiOutlineClipboardDocumentList } from "react-icons/hi2";
+import { AiOutlineCheck, AiOutlineClose } from "react-icons/ai";
 import { Colors } from "../../themes/themes";
 
 export const Container = styled.div`
   margin-top: 4%;
   width: 100%;
-  min-height: 50vh;
-  max-height: 100vh;
+  height: 80%;
+  max-height: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -53,6 +54,14 @@ export const ContentInfo = styled.div`
     rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
 `;
 
+export const ContainerButtons = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+`;
+
 export const ContainerRequest = styled.div`
   width: 15%;
   height: 85%;
@@ -60,8 +69,6 @@ export const ContainerRequest = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  /* border-right: 1px solid ${Colors.text2};
-  border-top: 1px solid ${Colors.text2}; */
 `;
 
 export const ContainerImg = styled.div`
@@ -87,6 +94,17 @@ export const InfoBuy = styled.div`
   justify-content: space-evenly;
 `;
 
+export const Button = styled.button`
+  box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px,
+    rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
+  width: 80px;
+  height: 80px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
 export const Name = styled.span`
   font-size: 1.4rem;
   color: ${Colors.text};
@@ -108,4 +126,13 @@ export const IconRequest = styled(HiOutlineClipboardDocumentList)`
   color: ${Colors.text2};
   font-size: 20px;
   margin: 0 2%;
+`;
+
+export const IconChecked = styled(AiOutlineCheck)`
+  color: #2a9d8f;
+  font-size: 30px;
+`;
+export const IconDelete = styled(AiOutlineClose)`
+  color: #e63946;
+  font-size: 30px;
 `;

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { FaShoppingCart } from "react-icons/fa";
 import { RiShoppingBag3Fill } from "react-icons/ri";
+import { BsBookmarkHeart } from "react-icons/bs";
 import { Colors } from "../../themes/themes";
 
 export const Container = styled.div`
@@ -116,6 +117,15 @@ export const BoxBuyButton = styled.div`
   height: 100%;
 `;
 
+export const ContainerSave = styled.div`
+  width: 100%;
+  height: 20%;
+  padding: 1% 1.2%;
+  display: flex;
+  flex-direction: row;
+  align-items: left;
+  justify-content: space-between;
+`;
 
 export const Name = styled.span`
   font-size: 1.4rem;
@@ -159,5 +169,11 @@ export const IconRequest = styled(FaShoppingCart)`
 export const IconBag = styled(RiShoppingBag3Fill)`
   color: ${Colors.color1};
   font-size: 20px;
+  margin: 0 2%;
+`;
+
+export const IconSaveFavorite = styled(BsBookmarkHeart)`
+  color: ${Colors.primary};
+  font-size: 28px;
   margin: 0 2%;
 `;

@@ -36,6 +36,7 @@ export const ViewProduct = () => {
   async function Add(id_manga, preco_manga, qtde_unidades, total_compra) {
     if (counter) setLoading(true);
     //adicionar objeto do pedido
+    //execeção que foi necessária para efetuar o pedido
     await api
       .post("/requests/register", {
         id_manga,
@@ -48,17 +49,11 @@ export const ViewProduct = () => {
         setTimeout(() => navigate("/pedidos"), 2000);
         console.log(data);
       })
-      .catch((error) => {
-        if(error.response.status == 500){
-
-        }
-        toast.error("Adicione uma quantidade válida");
-      })
+      .catch((error) => {})
       .finally(() => {
         setLoading(false);
       });
   }
-
   // pegar o cod que esta sendo passado pela url
   const { state } = useLocation();
   const { cod } = state;
@@ -80,7 +75,10 @@ export const ViewProduct = () => {
         </S.ContainerImg>
       </S.ContentRight>
       <S.Content>
-        <S.Name>{book?.nome}</S.Name>
+        <S.ContainerSave>
+          <S.Name>{book?.nome}</S.Name>
+          <S.IconSaveFavorite />
+        </S.ContainerSave>
         <S.Info>
           <S.Code>
             codigo: <S.CodeNumber>{cod}</S.CodeNumber>

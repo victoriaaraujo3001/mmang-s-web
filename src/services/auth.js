@@ -1,5 +1,5 @@
-export const CHAVE_TOKEN = "@tijuca-token";
-export const CHAVE_USUARIO = "@tijuca-usuario";
+export const TOKEN = "@chave-token";
+export const USER = "@chave-usuario";
 
 // Verifica se o usuario está logado
 export const estaAutenticado = () => localStorage.getItem(CHAVE_TOKEN) !== null;
@@ -19,8 +19,8 @@ export const pegarUsuario = () =>
 
 // Salva os dados iniciais do usuario
 export const logar = (token, usuario) => {
-  localStorage.setItem(CHAVE_TOKEN, token);
-  localStorage.setItem(CHAVE_USUARIO, usuario);
+  localStorage.setItem(TOKEN, token);
+  localStorage.setItem(USER, usuario);
 };
 
 // Desloga o usuario

@@ -37,7 +37,7 @@ export const Navbar = () => {
           Meus pedidos
         </S.Item>
         <S.Item>
-          <S.IconBag /> Minha cesta
+          <S.IconBag /> Meus favoritos
         </S.Item>
         <S.Item onClick={() => NavigateRegister()}>
           <S.IconAccount />
