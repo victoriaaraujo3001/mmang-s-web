@@ -1,9 +1,8 @@
 import { api } from "../services/api";
 
-export async function DisfavorMangaById(id) {
+export async function RegisterFavorite(id_manga) {
   try {
-    const response = await api.get(`/disfavor/${id}`);
-
+    const response = await api.get(`/addFavorite/${id_manga}`);
     return response;
   } catch (error) {
     return {

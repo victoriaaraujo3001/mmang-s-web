@@ -108,7 +108,7 @@ export const IconDisfavor = styled(FaHeartBroken)`
   font-size: 22px;
 `;
 
-export const Sale = styled(MdOutlineFavorite)`
+export const Heart = styled(MdOutlineFavorite)`
   font-size: 15px;
   color: #a2230f;
 `;

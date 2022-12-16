@@ -5,6 +5,9 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { FindMangaByCod } from "../../controller/mangáByCode";
 import * as S from "./style";
 import { api } from "../../services/api";
+import { RegisterFavorite } from "../../controller/addFavorite";
+import { BsFillBookmarkHeartFill } from "react-icons/bs";
+import { DisfavorMangaById } from "../../controller/disfavor";
 
 export const ViewProduct = () => {
   const navigate = useNavigate();
@@ -16,6 +19,10 @@ export const ViewProduct = () => {
   const [currentValue, setCurrentValue] = useState(0);
   //logica para carregando
   const [loading, setLoading] = useState(false);
+  //logica para salvar o favorite
+  const [favorite, setFavorite] = useState();
+  //logica para desfavoritar
+  const [disfavor, setDisfavor] = useState();
   //função de somar
   function handleClickSum() {
     setCounter(counter + 1);
@@ -31,7 +38,6 @@ export const ViewProduct = () => {
   function TotalAmount(qtdeBook) {
     setCurrentValue(book?.preco * qtdeBook);
   }
-
   //função que adiciona pedido na api
   async function Add(id_manga, preco_manga, qtde_unidades, total_compra) {
     if (counter) setLoading(true);
@@ -63,6 +69,17 @@ export const ViewProduct = () => {
     setBook(response.data);
     setCurrentValue(response.data?.preco);
   }
+  //adicionar um favorito
+  async function AddFavorite(id_manga) {
+    const response = await RegisterFavorite(id_manga);
+    setFavorite(response?.data);
+    console.log("response favorite", response.data, "------");
+  }
+  //desfavoritar
+  async function Disfavor(id) {
+    const response = await DisfavorMangaById(id);
+    setDisfavor(response);
+  }
   //renderização da função cada vez que for alterado o state
   useEffect(() => {
     getInfoManga();
@@ -76,8 +93,13 @@ export const ViewProduct = () => {
       </S.ContentRight>
       <S.Content>
         <S.ContainerSave>
-          <S.Name>{book?.nome}</S.Name>
-          <S.IconSaveFavorite title="Favoritar mangá"/>
+          <button onClick={()=> console.log(favorite)}>asdsad</button>
+          <S.Name>{book?.nome}</S.Name>  
+          {favorite?.status == 1 ? (
+            <button onClick={() => Disfavor(book?.id)} >asdasd</button>
+          ) : (
+            <S.IconSaveFavorite title="Favoritar mangá" onClick={() => AddFavorite(book?.id)}/>
+            )}
         </S.ContainerSave>
         <S.Info>
           <S.Code>

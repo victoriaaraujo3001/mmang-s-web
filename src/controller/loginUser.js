@@ -1,5 +1,5 @@
 import { api } from "../services/api";
-import { logar } from "../services/auth";
+import { loginUser } from "../services/auth";
 
 export async function LoginUser(login, password) {
   try {
@@ -7,10 +7,8 @@ export async function LoginUser(login, password) {
       login: login,
       password: password,
     });
-    console.log(response.data) 
-    logar(response.data.user.id, response.data.token) 
+    loginUser(response.data.user.id, response.data.token) 
     return response;
-    // return response.data;
   } catch (error) {
     return {
       response: error.response,
