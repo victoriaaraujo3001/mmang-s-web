@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { FaShoppingCart } from "react-icons/fa";
 import { RiShoppingBag3Fill } from "react-icons/ri";
-import { BsBookmarkHeart } from "react-icons/bs";
+import { BsBookmarkHeart, BsBookmarkHeartFill } from "react-icons/bs";
 import { Colors } from "../../themes/themes";
 
 export const Container = styled.div`
@@ -176,4 +176,9 @@ export const IconSaveFavorite = styled(BsBookmarkHeart)`
   color: ${Colors.primary};
   font-size: 28px;
   margin: 0 2%;
+`;
+
+export const IconFavorite = styled(BsBookmarkHeartFill)`
+  color: ${Colors.primary};
+  font-size: 25px;
 `;

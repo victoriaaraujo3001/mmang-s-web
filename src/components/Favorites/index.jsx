@@ -13,23 +13,11 @@ export const Favorites = () => {
     setFavorites(response);
   }
 
-  async function Disfavor(id) {
-    const response = await DisfavorMangaById(id);
-    if (response.status == 200) {
-      setTimeout(() => {
-        toast.error("Removido dos favoritos", {
-          icon: "💔",
-        })
-      }, 1500);
-    }
-    return response;
-  }
-
   useEffect(() => {
     ListFavorites();
   }, []);
 
-  console.log(favorites);
+  console.log("-------->",favorites);
 
   return (
     <>

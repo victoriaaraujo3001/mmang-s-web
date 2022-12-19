@@ -49,6 +49,7 @@ export const Requests = () => {
   return (
     <S.Container>
       <S.Content>
+        <S.Title>Pedidos</S.Title>
         {requests.length === 0 ? (
           <S.ContainerNotFound>
             <S.MessageNotFound>Você não tem pedidos</S.MessageNotFound>
@@ -58,7 +59,6 @@ export const Requests = () => {
           requests?.map((index) => {
             return (
               <>
-                <S.Title>Pedidos</S.Title>
                 <S.ContainerButtons>
                   <S.ContentInfo>
                     <S.ContainerRequest>

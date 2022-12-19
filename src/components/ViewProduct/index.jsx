@@ -3,11 +3,10 @@ import { useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { useLocation, useNavigate } from "react-router-dom";
 import { FindMangaByCod } from "../../controller/mangáByCode";
+import { RegisterFavorite } from "../../controller/addFavorite";
 import * as S from "./style";
 import { api } from "../../services/api";
-import { RegisterFavorite } from "../../controller/addFavorite";
-import { BsFillBookmarkHeartFill } from "react-icons/bs";
-import { DisfavorMangaById } from "../../controller/disfavor";
+import RenderConditional from "../RenderConditional";
 
 export const ViewProduct = () => {
   const navigate = useNavigate();
@@ -20,9 +19,7 @@ export const ViewProduct = () => {
   //logica para carregando
   const [loading, setLoading] = useState(false);
   //logica para salvar o favorite
-  const [favorite, setFavorite] = useState();
-  //logica para desfavoritar
-  const [disfavor, setDisfavor] = useState();
+  const [favorite, setFavorite] = useState(false);
   //função de somar
   function handleClickSum() {
     setCounter(counter + 1);
@@ -67,18 +64,15 @@ export const ViewProduct = () => {
   async function getInfoManga() {
     const response = await FindMangaByCod(cod);
     setBook(response.data);
+    setFavorite(response.data.favorite);
     setCurrentValue(response.data?.preco);
   }
   //adicionar um favorito
-  async function AddFavorite(id_manga) {
-    const response = await RegisterFavorite(id_manga);
+  async function AddFavorite(id_manga, actionFavorite) {
+    setFavorite(!actionFavorite)
+    const response = await RegisterFavorite(id_manga, actionFavorite);
     setFavorite(response?.data);
-    console.log("response favorite", response.data, "------");
-  }
-  //desfavoritar
-  async function Disfavor(id) {
-    const response = await DisfavorMangaById(id);
-    setDisfavor(response);
+    console.log("response favorite", response.data,);
   }
   //renderização da função cada vez que for alterado o state
   useEffect(() => {
@@ -93,13 +87,13 @@ export const ViewProduct = () => {
       </S.ContentRight>
       <S.Content>
         <S.ContainerSave>
-          <button onClick={()=> console.log(favorite)}>asdsad</button>
-          <S.Name>{book?.nome}</S.Name>  
-          {favorite?.status == 1 ? (
-            <button onClick={() => Disfavor(book?.id)} >asdasd</button>
-          ) : (
-            <S.IconSaveFavorite title="Favoritar mangá" onClick={() => AddFavorite(book?.id)}/>
-            )}
+          <S.Name>{book?.nome}</S.Name>
+          <RenderConditional isTrue={!favorite}>
+            <S.IconSaveFavorite onClick={() => AddFavorite(book?.id,false)} />  
+          </RenderConditional>
+          <RenderConditional isTrue={favorite}>
+            <S.IconFavorite onClick={() => AddFavorite(book?.id,true)}/>
+          </RenderConditional>
         </S.ContainerSave>
         <S.Info>
           <S.Code>
