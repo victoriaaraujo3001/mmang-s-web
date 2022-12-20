@@ -76,6 +76,12 @@ export const Price = styled.span`
   font-weight: bold;
 `;
 
+export const Discount = styled.span`
+  font-family: "Roboto", sans-serif;
+  color: #a2230f;
+  font-size: 0.9rem;
+`;
+
 export const NameSale = styled.span`
   width: 70%;
   display: flex;

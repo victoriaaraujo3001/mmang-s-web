@@ -104,7 +104,7 @@ export const InfoBuy = styled.div`
   height: 100%;
   flex-direction: column;
   display: flex;
-  align-items: center;
+  align-items: left;
   justify-content: space-evenly;
 `;
 
@@ -141,6 +141,13 @@ export const NumberRequests = styled.span`
 `;
 
 export const Amount = styled.span`
+  font-family: "Roboto", sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  padding-left: 3px;
+`;
+
+export const Discount = styled.span`
   font-family: "Roboto", sans-serif;
   font-weight: 600;
   font-size: 1rem;

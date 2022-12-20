@@ -15,6 +15,7 @@ export const Requests = () => {
     const response = await AllRequests();
     setRequests(response);
   }
+  console.log("🚀 ~ file: index.jsx:16 ~ GetAllRequests ~ response", requests);
   // função de finalizar pedido
   async function Finalize(id) {
     const response = await FinalizeOrderById(id);
@@ -23,9 +24,6 @@ export const Requests = () => {
       setTimeout(() => {
         toast.success("Pedido finalizado com sucesso");
       }, 1500);
-      setTimeout(() => {
-        window.location.reload();
-      }, 1000);
     }
   }
   //função de excluir pedido
@@ -36,9 +34,6 @@ export const Requests = () => {
       setTimeout(() => {
         toast.error("Pedido excluido com sucesso");
       }, 1500);
-      setTimeout(() => {
-        window.location.reload();
-      }, 1000);
     }
   }
 
@@ -49,7 +44,6 @@ export const Requests = () => {
   return (
     <S.Container>
       <S.Content>
-        <S.Title>Pedidos</S.Title>
         {requests.length === 0 ? (
           <S.ContainerNotFound>
             <S.MessageNotFound>Você não tem pedidos</S.MessageNotFound>
@@ -57,6 +51,9 @@ export const Requests = () => {
           </S.ContainerNotFound>
         ) : (
           requests?.map((index) => {
+            var desconto = parseFloat(index.valor_desconto).toFixed(2);
+            var total = parseFloat(index.total_compra).toFixed(2);
+            var valorFinal = parseFloat(total - desconto).toFixed(2);
             return (
               <>
                 <S.ContainerButtons>
@@ -76,6 +73,16 @@ export const Requests = () => {
                         <span>
                           valor: {parseFloat(index.preco_manga).toFixed(2)}
                         </span>
+                        {index.desconto == 1 ? (
+                          <span>
+                            desconto:
+                            <S.Discount>
+                              {parseFloat(index.valor_desconto).toFixed(2)}
+                            </S.Discount>
+                          </span>
+                        ) : (
+                          <span></span>
+                        )}
                       </S.ContentInfoAnime>
                     </S.ConteinerInfoGeneral>
                     <S.InfoBuy>
@@ -83,7 +90,9 @@ export const Requests = () => {
                       <span>
                         Total compra:
                         <S.Amount>
-                          {parseFloat(index.total_compra).toFixed(2)}
+                          {index.desconto == 1
+                            ? valorFinal
+                            : parseFloat(index.total_compra).toFixed(2)}
                         </S.Amount>
                       </span>
                     </S.InfoBuy>

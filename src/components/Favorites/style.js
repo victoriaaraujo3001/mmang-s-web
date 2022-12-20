@@ -86,6 +86,27 @@ export const ButtonDisfavor = styled.button`
   color: ${Colors.color1};
 `;
 
+export const ContainerNotFound = styled.div`
+  width: 1100px;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+`;
+
+export const ContainerNotFoundImage = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 350px;
+  height: 350px;
+`;
+
+export const ImageNotFound = styled.img`
+  width: 100%;
+  height: 100%;
+`;
 
 export const Price = styled.span`
   font-family: "Roboto", sans-serif;

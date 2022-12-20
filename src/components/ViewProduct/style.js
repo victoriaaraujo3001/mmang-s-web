@@ -160,6 +160,12 @@ export const AvailabilityNumber = styled.span`
   color: ${Colors.color3};
 `;
 
+export const Discount = styled.span`
+  font-family: "Roboto", sans-serif;
+  color: #a2230f;
+  font-size: 0.9rem;
+`;
+
 export const IconRequest = styled(FaShoppingCart)`
   color: ${Colors.color1};
   font-size: 20px;
@@ -180,5 +186,6 @@ export const IconSaveFavorite = styled(BsBookmarkHeart)`
 
 export const IconFavorite = styled(BsBookmarkHeartFill)`
   color: ${Colors.primary};
-  font-size: 25px;
+  font-size: 28px;
+  margin: 0 2%;
 `;

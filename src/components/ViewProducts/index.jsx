@@ -38,7 +38,7 @@ export const ViewProducts = () => {
             <S.ContainerNotFoundImage>
               <S.ImageNotFound src={notFoundCategory} />
             </S.ContainerNotFoundImage>
-            <span>Não há mangás com essa categoria</span>
+            <span>Não há mangás com essa categoria!</span>
           </S.ContainerNotFound>
         ) : (
           books?.map((index) => {
