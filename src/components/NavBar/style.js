@@ -32,6 +32,25 @@ export const Items = styled.div`
   justify-content: space-evenly;
 `;
 
+export const ContainerResult = styled.div`
+  overflow-y: auto;
+  position: absolute;
+  width: 30%;
+  height: 12%;
+  top: 58px;
+  border-radius: 8px;
+  margin-top: 0.5%;
+`;
+
+export const ButtomItemResult = styled.button`
+  height: 20%;
+  width: 100%;
+  display: flex;
+  align-self: left;
+  padding: 1% 2.5%;
+  background-color: #eeeded;
+`;
+
 export const Item = styled.div`
   width: 25%;
   height: 100%;
@@ -94,8 +113,8 @@ export const IconLogin = styled(BsFillPersonFill)`
 `;
 
 export const IconMyBag = styled(RiShoppingBag2Fill)`
-color: ${Colors.primary};
-font-size: 18px;
+  color: ${Colors.primary};
+  font-size: 18px;
 `;
 
 export const InputSearch = styled.input`
