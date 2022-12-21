@@ -39,7 +39,7 @@ export const FormLoginUser = () => {
 
   //função que navega para tela de cadastro
   async function NavigateRegister() {
-    navigate("/register/user");
+    navigate("/cadastro/usuario");
   }
   return (
     <S.Container>

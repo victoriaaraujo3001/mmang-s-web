@@ -78,6 +78,8 @@ export const ViewProduct = () => {
   useEffect(() => {
     getInfoManga();
   }, [state]);
+
+  
   return (
     <S.Container>
       <S.ContentRight>

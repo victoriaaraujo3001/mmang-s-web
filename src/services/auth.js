@@ -22,8 +22,7 @@ export const loginUser = (token, usuario) => {
 };
 
 // Desloga o usuario
-export const deslogar = () => {
-  localStorage.removeItem(CHAVE_TOKEN);
-  localStorage.removeItem(CHAVE_USUARIO);
-  //   localStorage.removeItem(CHAVE_FILTROS);
+export const logout = () => {
+  localStorage.removeItem(TOKEN);
+  localStorage.removeItem(USER);
 };
