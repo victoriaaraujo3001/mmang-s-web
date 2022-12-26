@@ -36,7 +36,7 @@ export const ContainerResult = styled.div`
   overflow-y: auto;
   position: absolute;
   width: 30%;
-  height: 12%;
+  height: 120px;
   top: 58px;
   border-radius: 8px;
   margin-top: 0.5%;
@@ -47,8 +47,10 @@ export const ButtomItemResult = styled.button`
   width: 100%;
   display: flex;
   align-self: left;
-  padding: 1% 2.5%;
+  padding-top: 0.5%;
+  padding-left: 1%;
   background-color: #eeeded;
+  padding-bottom: 0.1%;
 `;
 
 export const Item = styled.div`

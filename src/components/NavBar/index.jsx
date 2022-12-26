@@ -42,6 +42,12 @@ export const Navbar = () => {
   async function NavigateFavorites() {
     navigate("/favoritos");
   }
+   //navegar para tela de visualizar o produto
+   async function NavigateViewProduct(cod) {
+    navigate(`/manga/${cod}`, {
+      state: { cod: cod },
+    });
+  }
   //função de busca
   function SearchManga(text) {
     let listAllMangas = allMangas;
@@ -79,7 +85,7 @@ export const Navbar = () => {
         />
         <S.ContainerResult>
           {search.length !== 0 && allMangasResult?.map((index) => {
-            return <S.ButtomItemResult>{index.nome}</S.ButtomItemResult>;
+            return <S.ButtomItemResult onClick={() => NavigateViewProduct(index.cod_livro)}>{index.nome}</S.ButtomItemResult>;
           })}
         </S.ContainerResult>
       </S.ContainerInput>

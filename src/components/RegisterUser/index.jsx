@@ -38,7 +38,7 @@ export const FormRegisterUser = () => {
   }
   //função que navega para tela de login
   async function NavigateLogin() {
-    navigate("/login/user");
+    navigate("/login/usuario");
   }
 
   return (

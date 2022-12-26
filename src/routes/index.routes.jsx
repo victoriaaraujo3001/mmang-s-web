@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Favorites } from "../components/Favorites";
 import { FormLoginUser } from "../components/LoginUser";
+import { PayOrder } from "../components/PayOrder";
 import { Promotions } from "../components/Promotions";
 import { FormRegisterUser } from "../components/RegisterUser";
 import { Requests } from "../components/Requests";
@@ -33,6 +34,9 @@ export function RoutesAplication() {
         </Route>
         <Route element={<Home component={<Favorites/>} />}>
           <Route path="/favoritos"/>
+        </Route>
+        <Route element={<Home component={<PayOrder/>} />}>
+          <Route path="/pagamento/pedido/:id"/>
         </Route>
       </Routes>
     </BrowserRouter>

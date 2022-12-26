@@ -1,30 +1,34 @@
-import { useEffect } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import notFoundImg from "../../assets/notFoundRequests.png";
 import toast, { Toaster } from "react-hot-toast";
 import { DeleteOrderById } from "../../controller/deleteOrder";
 import { FinalizeOrderById } from "../../controller/finalizeOrder";
 import { AllRequests } from "../../controller/requests";
 import * as S from "./style";
+import { useNavigate } from "react-router-dom";
 
 export const Requests = () => {
   //guardar as informaçoes que vem da api
   const [requests, setRequests] = useState([]);
+  console.log("🚀 ~ file: index.jsx:13 ~ Requests ~ requests", requests)
+  //navegar para a tela de pagamento
+  const navigate = useNavigate();
   //função que faz a requisição
   async function GetAllRequests() {
     const response = await AllRequests();
+    console.log("🚀 ~ file: index.jsx:18 ~ GetAllRequests ~ response", response)
     setRequests(response);
+    
   }
-  console.log("🚀 ~ file: index.jsx:16 ~ GetAllRequests ~ response", requests);
   // função de finalizar pedido
   async function Finalize(id) {
     const response = await FinalizeOrderById(id);
 
-    if (response.status == 200) {
-      setTimeout(() => {
-        toast.success("Pedido finalizado com sucesso");
-      }, 1500);
-    }
+    // if (response.status == 200) {
+    //   setTimeout(() => {
+    //     toast.success("Pedido finalizado com sucesso");
+    //   }, 1500);
+    // }
   }
   //função de excluir pedido
   async function Delete(id) {
@@ -35,6 +39,10 @@ export const Requests = () => {
         toast.error("Pedido excluido com sucesso");
       }, 1500);
     }
+  }
+  //navegar para tela de pagamento
+  function NavigatePayOrder(id){
+    navigate(`/pagamento/pedido/${id}`, { state: { id: id } });
   }
 
   useEffect(() => {
@@ -98,7 +106,7 @@ export const Requests = () => {
                     </S.InfoBuy>
                   </S.ContentInfo>
                   <S.Button
-                    onClick={() => Finalize(index.id_pedido)}
+                    onClick={() => {Finalize(index.id_pedido), NavigatePayOrder(index.id_pedido)}}
                     title="Finalizar pedido"
                   >
                     <S.IconChecked />
