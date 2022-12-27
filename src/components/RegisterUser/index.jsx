@@ -10,6 +10,8 @@ export const FormRegisterUser = () => {
   const [login, setLogin] = useState();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+  const [nomeCompleto, setNomeCompleto] = useState();
+  const [telefone, setTelefone] = useState();
   //logica para carregando
   const [loading, setLoading] = useState(false);
   //navegação entre telas
@@ -20,7 +22,13 @@ export const FormRegisterUser = () => {
   async function getUserData(e) {
     e.preventDefault();
     setLoading(true);
-    const response = await RegisterUser(login, email, password);
+    const response = await RegisterUser(
+      login,
+      email,
+      password,
+      nomeCompleto,
+      telefone
+    );
     //validando resposta da api e trazendo notificações
     if (response.status == 201) {
       setTimeout(() => {
@@ -46,6 +54,28 @@ export const FormRegisterUser = () => {
       <S.Title>Cadastrar</S.Title>
       <S.Form onSubmit={getUserData}>
         <S.Content>
+          <S.BoxInput>
+            <S.Input
+              type={"text"}
+              placeholder="nome completo"
+              onChange={(e) => {
+                setNomeCompleto(e.target.value);
+              }}
+              required
+            />
+            <S.NameIcon />
+          </S.BoxInput>
+          <S.BoxInput>
+            <S.Input
+              type={"tel"}
+              placeholder="telefone"
+              onChange={(e) => {
+                setTelefone(e.target.value);
+              }}
+              required
+            />
+            <S.PhoneIcon />
+          </S.BoxInput>
           <S.BoxInput>
             <S.Input
               type={"text"}

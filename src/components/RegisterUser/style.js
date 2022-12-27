@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { BsPerson } from "react-icons/bs";
+import { BsPerson, BsTelephone, BsPencil } from "react-icons/bs";
 import { MdOutlineEmail } from "react-icons/md";
 import { HiOutlineKey, HiKey } from "react-icons/hi";
 import { Colors } from "../../themes/themes";
@@ -17,7 +17,7 @@ export const Container = styled.div`
 
 export const Content = styled.div`
   width: 80%;
-  height: 60%;
+  height: 90%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -50,7 +50,7 @@ export const Input = styled.input`
 
 export const Form = styled.form`
   width: 90%;
-  height: 60%;
+  height: 70%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -115,4 +115,16 @@ export const PasswordIcon = styled(HiOutlineKey)`
 export const ViewPasswordIcon = styled(HiKey)`
   font-size: 25px;
   color: ${Colors.secondary};
+`;
+
+export const PhoneIcon = styled(BsTelephone)`
+  font-size: 22px;
+  color: ${Colors.secondary};
+  margin-bottom: 0.3%;
+`;
+
+export const NameIcon = styled(BsPencil)`
+  font-size: 22px;
+  color: ${Colors.secondary};
+  margin-bottom: 0.3%;
 `;
