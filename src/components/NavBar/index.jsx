@@ -38,12 +38,16 @@ export const Navbar = () => {
   async function NavigateRequest() {
     navigate("/pedidos");
   }
+  //navegar para tela de pagamento do pedido
+  async function NavigateRequestPayment() {
+    navigate("/pagamento/pedido/:id");
+  }
   //navegar para tela favoritos
   async function NavigateFavorites() {
     navigate("/favoritos");
   }
-   //navegar para tela de visualizar o produto
-   async function NavigateViewProduct(cod) {
+  //navegar para tela de visualizar o produto
+  async function NavigateViewProduct(cod) {
     navigate(`/manga/${cod}`, {
       state: { cod: cod },
     });
@@ -81,12 +85,21 @@ export const Navbar = () => {
         <S.IconSearch />
         <S.InputSearch
           placeholder="o que você está buscando..."
-          onChange={(e) => {SearchManga(e.target.value), setSearch(e.target.value)}}
+          onChange={(e) => {
+            SearchManga(e.target.value), setSearch(e.target.value);
+          }}
         />
         <S.ContainerResult>
-          {search.length !== 0 && allMangasResult?.map((index) => {
-            return <S.ButtomItemResult onClick={() => NavigateViewProduct(index.cod_livro)}>{index.nome}</S.ButtomItemResult>;
-          })}
+          {search.length !== 0 &&
+            allMangasResult?.map((index) => {
+              return (
+                <S.ButtomItemResult
+                  onClick={() => NavigateViewProduct(index.cod_livro)}
+                >
+                  {index.nome}
+                </S.ButtomItemResult>
+              );
+            })}
         </S.ContainerResult>
       </S.ContainerInput>
       <S.Items>
@@ -94,9 +107,39 @@ export const Navbar = () => {
           <S.IconCategory />
           Categorias
         </S.Item>
-        <S.Item onClick={() => NavigateRequest()}>
-          <S.IconRequest />
-          Meus pedidos
+        <S.Item>
+          <Menu>
+            {({ isOpen }) => (
+              <>
+                <MenuButton isActive={isOpen}>
+                  <div
+                    style={{
+                      height: "70px",
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      justifyContent: "space-evenly",
+                    }}
+                  >
+                    {isOpen ? (
+                      <S.IconRequest color="#808080" />
+                    ) : (
+                      <S.IconRequest />
+                    )}
+                    <span>Meus pedidos</span>
+                  </div>
+                </MenuButton>
+                <MenuList>
+                  <MenuItem
+                    onClick={() => NavigateRequest()}
+                    icon={<S.IconPending />}
+                  >
+                    Em andamento
+                  </MenuItem>
+                </MenuList>
+              </>
+            )}
+          </Menu>
         </S.Item>
         <S.Item onClick={() => NavigateFavorites()}>
           <S.IconBag /> Meus favoritos

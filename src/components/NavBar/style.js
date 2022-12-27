@@ -5,6 +5,7 @@ import {
   BsBookmarkHeartFill,
   BsFillFilePersonFill,
   BsFillPersonFill,
+  BsFillCartPlusFill
 } from "react-icons/bs";
 import { GiOpenBook } from "react-icons/gi";
 import { FaShoppingCart } from "react-icons/fa";
@@ -115,6 +116,11 @@ export const IconLogin = styled(BsFillPersonFill)`
 `;
 
 export const IconMyBag = styled(RiShoppingBag2Fill)`
+  color: ${Colors.primary};
+  font-size: 18px;
+`;
+
+export const IconPending = styled(BsFillCartPlusFill)`
   color: ${Colors.primary};
   font-size: 18px;
 `;
