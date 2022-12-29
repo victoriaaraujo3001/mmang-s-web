@@ -1,7 +1,7 @@
 import { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { CircularProgress } from "@chakra-ui/react";
-import { redirect, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { LoginUser } from "../../controller/loginUser";
 import * as S from "./style";
 
@@ -82,7 +82,9 @@ export const FormLoginUser = () => {
         {loading ? (
           <CircularProgress isIndeterminate color="#161B33" height={10} />
         ) : (
-          <S.Button type={"submit"}>entrar</S.Button>
+          <S.Button type={"submit"}>
+            entrar
+          </S.Button>
         )}
       </S.Form>
       <S.Footer>

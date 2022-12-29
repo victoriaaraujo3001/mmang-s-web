@@ -44,7 +44,7 @@ export const ContainerResult = styled.div`
 `;
 
 export const ButtomItemResult = styled.button`
-  height: 20%;
+  height: 25%;
   width: 100%;
   display: flex;
   align-self: left;
