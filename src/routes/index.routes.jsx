@@ -8,7 +8,6 @@ import {
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../contexts/auth.context";
 import { getToken } from "../services/auth.js";
-
 import { Favorites } from "../components/Favorites";
 import { FormLoginUser } from "../components/LoginUser";
 import { PayOrder } from "../components/PayOrder";
@@ -20,6 +19,7 @@ import { ViewProducts } from "../components/ViewProducts";
 import { Home } from "../screens/Home";
 import { Register } from "../screens/Register";
 import { NotFoundScreen } from "../screens/NotFound";
+import { RedirectUser } from "../components/RedirectUser";
 
 export function RoutesAplication() {
   const { userStoragedData } = useContext(AuthContext);
@@ -56,7 +56,7 @@ export function RoutesAplication() {
       if (props.pathname === "/") {
         return redirect("/home");
       } else if (props.pathname === "*") {
-        return redirect("/error-pages/error-404");
+        return redirect("/*");
       } else {
         return (
           <Routes>
@@ -67,7 +67,7 @@ export function RoutesAplication() {
         );
       }
     } else {
-      return <Navigate replace={true} to="/cadastro/usuario" />;
+      return <Navigate replace={true} to="/redirect" />;
     }
   };
   console.log("loading", loading)
@@ -136,6 +136,7 @@ export function RoutesAplication() {
           </Route>
            {/* rota de not_found */}
           <Route path="*" element={<NotFoundScreen/>} />
+          <Route path="/redirect" element={<RedirectUser/>} />
         </Routes>
       )}
     </BrowserRouter>
