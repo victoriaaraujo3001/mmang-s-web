@@ -19,9 +19,7 @@ import { ViewProduct } from "../components/ViewProduct";
 import { ViewProducts } from "../components/ViewProducts";
 import { Home } from "../screens/Home";
 import { Register } from "../screens/Register";
-import { AuthRoutes } from "./auth.routes";
-import { WebRoutes } from "./app.routes";
-import { FaLessThanEqual } from "react-icons/fa";
+import { NotFoundScreen } from "../screens/NotFound";
 
 export function RoutesAplication() {
   const { userStoragedData } = useContext(AuthContext);
@@ -137,7 +135,7 @@ export function RoutesAplication() {
             <Route path="/login/usuario" />
           </Route>
            {/* rota de not_found */}
-          <Route path="*" element={<p>There's nothing here: 404!</p>} />
+          <Route path="*" element={<NotFoundScreen/>} />
         </Routes>
       )}
     </BrowserRouter>
