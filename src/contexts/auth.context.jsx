@@ -1,25 +1,60 @@
 import { useEffect, useState } from "react";
+import { useContext } from "react";
 import { createContext } from "react";
-import { getToken } from "../services/auth";
+import { getIdUser, getToken } from "../services/auth";
 
 export const AuthContext = createContext({});
 
-export const AuthProvider = ({ children }) => {
-  const [userStoragedData, setUserStoragedData] = useState(null);
+export function AuthProvider({ children }) {
+  const [user, setUser] = useState(null);
+  const [loading, setLoagind] = useState(true);
+  const [loadingLogin, setLoadingLogin] = useState(false);
 
   useEffect(() => {
-    !userStoragedData && getuserData();
+    async function loadStorageData() {
+      const storageToken = await getToken();
+      const storageUser = await getIdUser();
+
+      if (storageToken && storageUser) {
+        setUser(storageUser);
+      } else {
+        //função de logout
+        console.log("caiu no else de logout");
+      }
+
+      setLoagind(true);
+    }
+    try {
+      loadStorageData();
+    } catch (error) {
+      console.log("🚀 ~ file: auth.context.jsx:29 ~ useEffect ~ error", error);
+      alert("erro", error);
+    }
   }, []);
 
-  async function getuserData() {
-    setUserStoragedData(await getToken());
-  }
-
   return (
-    <AuthContext.Provider value={{ userStoragedData, setUserStoragedData }}>
+    <AuthContext.Provider
+      value={{
+        signed: !!user,
+        token: "",
+        user,
+        loading,
+        loadingLogin,
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );
-};
+}
 
-export default AuthProvider;
+export function useAuth() {
+  const context = useContext(AuthContext);
+  console.log("🚀 ~ file: auth.context.jsx:52 ~ useAuth ~ context", context);
+
+  if (!context) {
+    throw new Error("useAuth must be used within an AuthProvider");
+  }
+  return context
+}
+
+export default { AuthProvider, useAuth };

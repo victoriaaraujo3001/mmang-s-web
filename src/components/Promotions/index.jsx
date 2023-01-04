@@ -12,10 +12,6 @@ export const Promotions = () => {
   //função que traz os dados da api
   async function getBooksOnSale() {
     const response = await PromotionsMangas();
-    console.log(
-      "🚀 ~ file: index.jsx:15 ~ getBooksOnSale ~ response",
-      response
-    );
     setBooksOnSale(response);
   }
   // função para navegar para a tela de view product
@@ -23,7 +19,6 @@ export const Promotions = () => {
     navigate(`/manga/${cod}`, {
       state: { cod: cod },
     });
-    console.log("teste");
   }
   //para fazer a renderização quando executa a requisição
   useEffect(() => {
