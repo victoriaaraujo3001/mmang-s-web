@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { useContext } from "react";
 import { createContext } from "react";
+import { BrowserRouter, redirect, Route, Routes } from "react-router-dom";
 import { getIdUser, getToken } from "../services/auth";
+import RedirectUser from "../components/RedirectUser/index";
 
 export const AuthContext = createContext({});
 
@@ -18,8 +20,8 @@ export function AuthProvider({ children }) {
       if (storageToken && storageUser) {
         setUser(storageUser);
       } else {
-        //função de logout
-        console.log("caiu no else de logout");
+        // função logout
+        console.log("else logout");
       }
 
       setLoagind(true);
@@ -54,7 +56,7 @@ export function useAuth() {
   if (!context) {
     throw new Error("useAuth must be used within an AuthProvider");
   }
-  return context
+  return context;
 }
 
 export default { AuthProvider, useAuth };

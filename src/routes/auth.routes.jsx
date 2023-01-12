@@ -4,7 +4,9 @@ import { Promotions } from "../components/Promotions";
 import { Home } from "../screens/Home";
 import { Register } from "../screens/Register";
 import { FormRegisterUser } from "../components/RegisterUser";
-
+import { Favorites } from "../components/Favorites/index";
+import { PrivateRoute } from "./index.routes";
+import RedirectUser from "../components/RedirectUser";
 export function AuthRoutes() {
   return (
     <BrowserRouter>
@@ -18,6 +20,17 @@ export function AuthRoutes() {
         <Route element={<Register component={<FormLoginUser />} />}>
           <Route path="/login/usuario" />
         </Route>
+        <Route element={<RedirectUser/>}>
+          <Route path="/redirect" />
+        </Route>
+        <Route
+          path="/favoritos"
+          element={
+            <PrivateRoute>
+              <Home component={<Favorites />} />
+            </PrivateRoute>
+          }
+        />
       </Routes>
     </BrowserRouter>
   );

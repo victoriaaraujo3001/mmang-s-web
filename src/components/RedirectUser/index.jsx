@@ -3,7 +3,7 @@ import ImgRedirect from "../../assets/redirectUser.png";
 import * as S from "./style";
 import { useNavigate } from "react-router-dom";
 
-export const RedirectUser = () => {
+const RedirectUser = () => {
   //navegar entre tela de home e cadastro
   const navigate = useNavigate();
   //função de ir para tela de cadastro
@@ -39,3 +39,5 @@ export const RedirectUser = () => {
     </S.Container>
   );
 };
+
+export default RedirectUser;
