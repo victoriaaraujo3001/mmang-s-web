@@ -1,9 +1,5 @@
-import { useEffect, useState } from "react";
-import { useContext } from "react";
-import { createContext } from "react";
-import { BrowserRouter, redirect, Route, Routes } from "react-router-dom";
+import { useContext, createContext, useEffect, useState } from "react";
 import { getIdUser, getToken } from "../services/auth";
-import RedirectUser from "../components/RedirectUser/index";
 
 export const AuthContext = createContext({});
 
